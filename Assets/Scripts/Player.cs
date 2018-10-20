@@ -8,13 +8,28 @@ public class Player : MonoBehaviour {
     // configuration params
     [SerializeField] float horizontalMoveSpeed = 10f;
     [SerializeField] float verticalMoveSpeed = 10f;
+    [SerializeField] float padding = .5f;
 
+    float xMin;
+    float xMax;
+    float yMin;
+    float yMax;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
+	void Start ()
+    {
+        SetUpMoveBoundaries();
+    }
+
+    private void SetUpMoveBoundaries()
+    {
+        Camera gameCamera = Camera.main;
+        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding;
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
+        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
+    }
+
+    void Update () {
         Move();
 	}
 
@@ -22,8 +37,9 @@ public class Player : MonoBehaviour {
     {
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * horizontalMoveSpeed;
         var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * verticalMoveSpeed;
-        var newXPos = transform.position.x + deltaX;
-        var newYPos = transform.position.y + deltaY;
+
+        var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
+        var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
         transform.position = new Vector2(newXPos, newYPos);
     }
 }
