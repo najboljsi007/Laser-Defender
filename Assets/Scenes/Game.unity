@@ -400,20 +400,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114301447445460060, guid: 36ffb75e7ecede344a8f78c0d7cceed8,
         type: 2}
-      propertyPath: laser
-      value: 
-      objectReference: {fileID: 1428531302484348, guid: 6dbed19cb6357db43a8b6f8b0dd6c51c,
-        type: 2}
-    - target: {fileID: 114301447445460060, guid: 36ffb75e7ecede344a8f78c0d7cceed8,
-        type: 2}
-      propertyPath: laserPrefab
-      value: 
-      objectReference: {fileID: 1428531302484348, guid: 6dbed19cb6357db43a8b6f8b0dd6c51c,
-        type: 2}
-    - target: {fileID: 114301447445460060, guid: 36ffb75e7ecede344a8f78c0d7cceed8,
-        type: 2}
-      propertyPath: projectileSpeed
-      value: 20
+      propertyPath: projectileFiringPeriod
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36ffb75e7ecede344a8f78c0d7cceed8, type: 2}
